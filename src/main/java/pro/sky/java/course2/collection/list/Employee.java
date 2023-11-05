@@ -3,29 +3,20 @@ package pro.sky.java.course2.collection.list;
 import java.util.Objects;
 
 public class Employee {
-    static int count = 1;
-    private int id;
-    private String surname;
-    private String name;
+    private final String firstName;
+    private final String lastName;
 
-    public Employee(String surname, String name) {
-
-        this.id = count;
-        this.surname = surname;
-        this.name = name;
-        count++;
+    public Employee(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    public int getId() {
-        return id;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public String getName() {
-        return name;
+    public String getLastName() {
+        return lastName;
     }
 
     @Override
@@ -33,15 +24,19 @@ public class Employee {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         Employee employee = (Employee) object;
-        return Objects.equals(surname, employee.surname) && Objects.equals(name, employee.name);
+        return Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(surname, name);
+        return Objects.hash(firstName, lastName);
     }
 
+    @Override
     public String toString() {
-        return "ID:" + this.id + " " + this.surname + " " + this.name + " ";
+        return "Employee{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }
